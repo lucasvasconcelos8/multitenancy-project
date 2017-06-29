@@ -38,31 +38,41 @@ def autenticarUsuario(username, password):
 
     collUsers = dbContacts['users']
 
+    #check if exists login in database
     cursorResult = collUsers.find({"username" : username, "password" : password})
 
     user_auth = {}
     for user in cursorResult:
         user_auth = user
 
+    #if ok, return the user credentials(id, type_user)
     if user_auth != {} :
-        print 'Check info user: '+user_auth['_id']+'-'+user_auth['tipo_user']
-        return user_auth['_id'], user_auth['tipo_user']
+        print 'Check info user: '+user_auth['_id']+'-'+user_auth['type_user']
+        return user_auth['_id'], user_auth['type_user']
     else:
         print 'No user'
         return 'Login or password invalid'
 
 """FUNCTIONS CRUD CONTACTS"""
 
-def insertContact(contact_json):
+#   input: contact info and user_id that owner contact
+#   output: OK
+def insertContact(user_id, contact_json):
     return ''
 
-def removeContact(contact_id):
+#   input: contact id and user_id that owner contact
+#   output: OK
+def removeContact(user_id, contact_id):
     return ''
 
-def updateContact():
+#   input: contact update info and user_id that owner contact
+#   output: OK
+def updateContact(user_id, contact_update_json):
     return ''
 
-def listContacts():
+#   input: user_id that owner contacts
+#   output: list of contacts
+def listContacts(user_id):
     return ''
 
 """UTIL FUNCTIONS"""
@@ -73,5 +83,7 @@ def generateID(username, password):
         user_id = user_id+str(ord(char))
     for char in password
         user_id = user_id+str(ord(char))
+
+    print 'check generate key : '+user_id
 
     return user_id
