@@ -17,11 +17,20 @@ def criarUsuario(user_json):
 
     collUsers = dbContacts['users']
 
-    try:
-        collUsers.insert(user_json)
-        return 'Success'
-    except:
-        return 'Error in insert new user to database'
+    cursorResult = collUsers.find({"username" : user_json['username']})
+
+    user_exist = {}
+    for user in cursorResult:
+        user_exist = user
+
+    if user_exist = {}:
+        try:
+            collUsers.insert(user_json)
+            return 'Success'
+        except:
+            return 'Error in insert new user to database'
+    else:
+        return 'Already exist user with this username'
 
 #   input: receive a username and password
 #   output: send user id to use in operations
