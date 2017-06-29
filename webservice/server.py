@@ -22,52 +22,51 @@ parser = reqparse.RequestParser()
 """-------Classes do CRUD dos contatos-------"""
 list_contatos = []
 
-class InserirContato(Resource):
+class InsertContact(Resource):
 
     @staticmethod
     def post():
         return ''
 
-class EditarContato(Resource):
+class EditContact(Resource):
 
     @staticmethod
     def post():
         return ''
 
-class ListarContatos(Resource):
+class ListContacts(Resource):
 
     @staticmethod
     def get():
         return ''
 
-class RemoverContato(Resource):
+class RemoveContact(Resource):
     @staticmethod
-    def get(contato_id):
+    def get(contact_id):
       return ''
 
-#Busca apenas por nome por enquanto
-class BuscarContatos(Resource):
+class SearchContacts(Resource):
     @staticmethod
     def get(nome):
       return ''
 
 """-------Classes de Usuário-------"""
-class NovoUsuario(Resource):
+class NewUser(Resource):
 
-class EditarUsuario(Resource):
+class EditUser(Resource):
 
-class AutenticarUsuario(Resource):
+class ValidateUser(Resource):
 
 """-------ENDPOINTS-------"""
 #api.add_resource(Teste,'/teste/<string:word>', endpoint='teste')
-api.add_resource(InserirContato, '/inserir', endpoint='inserirContato')
-api.add_resource(EditarContato, '/editar', endpoint='EditarContato')
-api.add_resource(RemoverContato, '/remover/<string:contato_id>',endpoint="RemoverContato")
-api.add_resource(ListarContatos,'/listar',endpoint="ListarContatos");
-api.add_resource(BuscarContatos,'/buscar/<string:nome>',endpoint="BuscarContato")
-api.add_resource(NovoUsuario,'/usuario/novo', endpoint='novoUsuario')
-api.add_resource(EditarUsuario,'/usuario/editar', endpoint='editarUsuario')
-api.add_resource(AutenticarUsuario, '/usuario/autenticar', endpoint='autenticarUsuario')
+api.add_resource(InsertContact, '/insert', endpoint='insertContact')
+api.add_resource(EditContact, '/edit', endpoint='editContact')
+api.add_resource(RemoveContact, '/remove/<string:contato_id>',endpoint="removeContact")
+api.add_resource(ListContacts,'/list',endpoint="listContacts");
+api.add_resource(SearchContacts,'/search/<string:name>',endpoint="searchContact")
+api.add_resource(NewUser,'/user/new', endpoint='newUser')
+api.add_resource(EditUser,'/user/edit', endpoint='editUser')
+api.add_resource(validateUser, '/user/validate', endpoint='validateUser')
 
 
 #finish program

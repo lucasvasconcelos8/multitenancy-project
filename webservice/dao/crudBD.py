@@ -53,16 +53,16 @@ def autenticarUsuario(username, password):
 
 """FUNCTIONS CRUD CONTACTS"""
 
-def inserirContato():
+def insertContact(contact_json):
     return ''
 
-def removerContato():
+def removeContact(contact_id):
     return ''
 
-def atualizarContato():
+def updateContact():
     return ''
 
-def listContatos():
+def listContacts():
     return ''
 
 """UTIL FUNCTIONS"""
