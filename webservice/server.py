@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template,  Response, jsonify, request, make_response
+from flask import Flask, render_template,  Response, jsonify, request, make_response,send_file
 from flask_restful import Resource,Api
 from flask_restful import reqparse
 from werkzeug import secure_filename
 from datetime import datetime
+import sys
 
-from dao import crudBD
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+
+""" commented for test"""
+#from dao import crudBD
 
 """-------Flask start e config-------"""
 app = Flask(__name__, static_folder='static')
@@ -17,6 +23,10 @@ app.config['UPLOAD_FOLDER'] = 'uploads/'
 app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 parser = reqparse.RequestParser()
+
+@app.route('/')
+def log():
+    return send_file('templates/index.html')
 
 
 """-------Classes do CRUD dos contatos-------"""
@@ -38,7 +48,7 @@ class ListContacts(Resource):
 
     @staticmethod
     def get():
-        return ''
+        return [{'id':'1', 'name':'Igor','email':'igorsbrito93@gmail.com','phone':'85997819696'}, {'id':'1', 'name':'Pedro','email':'pedro01@gmail.com','phone':'8599974597'}]
 
 class RemoveContact(Resource):
     @staticmethod
@@ -52,10 +62,28 @@ class SearchContacts(Resource):
 
 """-------Classes de Usuário-------"""
 class NewUser(Resource):
+    @staticmethod
+    def get():
+        return ''
 
 class EditUser(Resource):
+    @staticmethod
+    def get():
+        return ''
+
 
 class ValidateUser(Resource):
+    @staticmethod
+    def get():
+        return ''
+
+class LogIn(Resource):
+    @staticmethod
+    def get(username, password ):
+        print username
+        print password
+        return 'Sucesso'
+
 
 """-------ENDPOINTS-------"""
 #api.add_resource(Teste,'/teste/<string:word>', endpoint='teste')
@@ -66,7 +94,8 @@ api.add_resource(ListContacts,'/list',endpoint="listContacts");
 api.add_resource(SearchContacts,'/search/<string:name>',endpoint="searchContact")
 api.add_resource(NewUser,'/user/new', endpoint='newUser')
 api.add_resource(EditUser,'/user/edit', endpoint='editUser')
-api.add_resource(validateUser, '/user/validate', endpoint='validateUser')
+api.add_resource(ValidateUser, '/user/validate', endpoint='validateUser')
+api.add_resource(LogIn,'/login/<string:username>/<string:password>', endpoint='login')
 
 
 #finish program
