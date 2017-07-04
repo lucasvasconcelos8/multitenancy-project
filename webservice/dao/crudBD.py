@@ -125,6 +125,7 @@ def listContacts(user_id):
 
 #function generate id with composition of ascii number of username and password characters
 def generateID(username, password):
+    user_id = ""
     for char in username:
         user_id = user_id+str(ord(char))
     for char in password:

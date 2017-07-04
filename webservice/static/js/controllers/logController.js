@@ -33,10 +33,31 @@ angular.module('myApp').controller('logController', function($scope, $http, user
 
 	$scope.singup = function(){
 		if($scope.newUsername != "" && $scope.newPassword != "" && $scope.newEmail != ""){
-			$http.get(' http://0.0.0.0:80/user/new')
+			user_json = {
+				'username':$scope.newUsername,
+				'password':$scope.newPassword,
+				'email':$scope.newEmail,
+			};
+
+			$http({
+				method: 'POST',
+				url: 'http://0.0.0.0:80/user/new',
+				data: {'user_json':user_json},
+			})
             .success(function (data, status, headers, config) {
-                $scope.Details = data;
-                console.log($scope.Details)
+                $scope.details = data;
+                if($scope.details.status == "Success"){
+                	var id = $scope.details["id"] 
+
+                	userService.username = $scope.username;
+                	userService.password = $scope.password;
+                	userService.idUser = id;
+
+                	console.log("Sucesso");
+                	// Open new the system.
+                	$scope.initiate();
+                }
+                
             })
             .error(function (data, status, header, config) {
                console.log(status)

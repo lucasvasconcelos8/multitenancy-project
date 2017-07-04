@@ -3,8 +3,9 @@ angular.module('userAccount', ['ngResource'])
         
 
         var user = {
-            username: 'igorteste',
-            password: 'senhateste'
+            username: "",
+            password: "",
+            idUser: ""
             //proprietes from user account
         }
 

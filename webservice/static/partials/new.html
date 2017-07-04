@@ -20,33 +20,46 @@
 	      </div>
 	  	</nav>  
 	</header>
-
+	<br/>
 	<div class="panel panel-default" style="width:auto;height:auto; margin-left:1%; margin-right:1%;">
 		<div class="panel-body">
 			<form>	
 				<div class="row">
 					<div class="form-group col-md-4">
-	                	<label for="recipient-name" class="form-control-label">Connection name</label>
-	                	<input type="text" class="form-control" id="connection-name" ng-model="connectionName">
+	                	<label for="recipient-name" class="form-control-label">Name</label>
+	                	<input type="text" class="form-control" id="name" ng-model="name">
 	             	</div>
 	             	<div class="form-group col-md-4">
-	                	<label for="recipient-name" class="form-control-label">Connection name</label>
-	                	<input type="text" class="form-control" id="connection-name" ng-model="connectionName">
+	                	<label for="recipient-name" class="form-control-label">Apelido</label>
+	                	<input type="text" class="form-control" id="apelido" ng-model="apelido">
 	             	</div>
 	             	<div class="form-group col-md-4">
-	                	<label for="recipient-name" class="form-control-label">Connection name</label>
-	                	<input type="text" class="form-control" id="connection-name" ng-model="connectionName">
+	                	<label for="recipient-name" class="form-control-label">Email</label>
+	                	<input type="text" class="form-control" id="email" ng-model="email">
 	             	</div>
 				</div>
 				<div class="row">
-					<div class="form-group col-md-5">
-	                	<label for="recipient-name" class="form-control-label">Connection name</label>
-	                	<input type="text" class="form-control" id="connection-name" ng-model="connectionName">
+					<div class="form-group col-md-4">
+	                	<label for="recipient-name" class="form-control-label">Phone</label>
+	                	<input type="number" class="form-control" id="phone" ng-model="phone">
 	             	</div>
-	             	<div class="form-group col-md-5">
-	                	<label for="recipient-name" class="form-control-label">Connection name</label>
-	                	<input type="text" class="form-control" id="connection-name" ng-model="connectionName">
+	             	<div class="form-group col-md-4">
+	                	<label for="recipient-name" class="form-control-label">Data Aniversario</label>
+	                	<input type="date" class="form-control datepicker" id="apelido" ng-model="dataAniversario">
 	             	</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-1">
+	                	<button class="btn btn-danger" ng-click="voltar()"> 
+	                		<span class="glyphicon glyphicon-chevron-left"></span> Voltar 
+	                	</button>
+	             	</div>
+	             	<div class="form-group col-md-1">
+	                	<button class="btn btn-success" ng-click="salvar()"> 
+	                		<span class="glyphicon glyphicon-floppy-disk"></span> Salvar
+	                	</button>
+	             	</div>
+	             	
 				</div>
 			</form>
 		</div>

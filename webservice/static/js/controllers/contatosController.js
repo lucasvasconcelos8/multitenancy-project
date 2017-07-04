@@ -2,6 +2,7 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 
 	$scope.username = userService.username;
 	$scope.password = userService.password;
+	$scope.userId = userService.idUser;
 
 	$scope.contatos = [];
 

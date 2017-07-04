@@ -4,6 +4,7 @@ from flask_restful import Resource,Api
 from flask_restful import reqparse
 from werkzeug import secure_filename
 from datetime import datetime
+import json
 import sys
 
 reload(sys)
@@ -63,8 +64,26 @@ class SearchContacts(Resource):
 """-------Classes de Usuário-------"""
 class NewUser(Resource):
     @staticmethod
-    def get():
-        return ''
+    def post():
+        # get user_json {username, passowrd, email}
+        data = request.data
+        user_json = json.loads(data)['user_json']
+
+        username = user_json['username']
+        password = user_json['password']
+
+        resp = crudBD.criarUsuario(user_json)
+
+        if(resp == "Success"):
+            userId = crudBD.generateID(username,password)
+
+            return {'status':'Success', 'id':userId}
+        elif(resp == "Already exist user with this username"):
+            return {'status':'fail', 'msg':'user alredy exists'}
+        else:
+            return {'status':'fail', 'msg':'error on the database'}
+
+        return 'sucesso'
 
 class EditUser(Resource):
     @staticmethod
@@ -80,8 +99,8 @@ class ValidateUser(Resource):
 class LogIn(Resource):
     @staticmethod
     def get(username, password ):
-        print username
-        print password
+        
+
         return 'Sucesso'
 
 
