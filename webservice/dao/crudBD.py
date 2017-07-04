@@ -23,7 +23,7 @@ def criarUsuario(user_json):
     for user in cursorResult:
         user_exist = user
 
-    if user_exist = {}:
+    if user_exist == {}:
         try:
             collUsers.insert(user_json)
             return 'Success'
@@ -81,7 +81,7 @@ def listContacts(user_id):
 def generateID(username, password):
     for char in username:
         user_id = user_id+str(ord(char))
-    for char in password
+    for char in password:
         user_id = user_id+str(ord(char))
 
     print 'check generate key : '+user_id

@@ -11,7 +11,7 @@ sys.setdefaultencoding('utf-8')
 
 
 """ commented for test"""
-#from dao import crudBD
+from dao import crudBD
 
 """-------Flask start e config-------"""
 app = Flask(__name__, static_folder='static')
