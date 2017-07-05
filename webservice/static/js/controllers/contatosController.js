@@ -35,7 +35,7 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 		editService.email = contact.email;
 		editService.phone = contact.phone;
 		editService.dataAniversario = contact.dataAniversario;
-		$location.path('/newcontact/'+contact._id);
+		$location.path('/editContact/'+contact._id);
 	}
 
 	$scope.newContact = function(){

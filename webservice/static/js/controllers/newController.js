@@ -1,5 +1,5 @@
 angular.module('myApp').controller('newController', 
-	function($scope, userService, $location, $http, contactService, $routeParams) {
+	function($scope, userService, $location, $http, $routeParams) {
 
 	$scope.username = userService.username;
 	$scope.password = userService.password;
