@@ -99,9 +99,15 @@ class ValidateUser(Resource):
 class LogIn(Resource):
     @staticmethod
     def get(username, password ):
-        
+        resp = crudBD.autenticarUsuario(username, password)
 
-        return 'Sucesso'
+        if (isinstance(resp, tuple)):
+            user_id = resp[0]
+            user_type = resp[1]
+
+            return {'status':'Success', 'user_id':user_id, 'user_type':user_type}
+        else:
+            return {'status':'fail', 'msg':resp}
 
 
 """-------ENDPOINTS-------"""

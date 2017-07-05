@@ -47,7 +47,7 @@ def autenticarUsuario(username, password):
 
     #if ok, return the user credentials(id, type_user)
     if user_auth != {} :
-        print 'Check info user: '+user_auth['_id']+'-'+user_auth['type_user']
+        print 'Check info user: '+str(user_auth['_id'])+'-'+user_auth['type_user']
         return user_auth['_id'], user_auth['type_user']
     else:
         print 'No user'
