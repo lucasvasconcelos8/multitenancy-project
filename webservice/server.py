@@ -36,8 +36,18 @@ list_contatos = []
 class InsertContact(Resource):
 
     @staticmethod
-    def post():
-        return ''
+    def post(user_id):
+
+        data = request.data
+        contact_json = json.loads(data)['contact_json']
+
+
+        resp = crudBD.insertContact(user_id, contact_json)
+
+        if(resp == 'Sucess'):
+            return 'Success'
+        else:
+            return 'fail'
 
 class EditContact(Resource):
 
@@ -48,8 +58,15 @@ class EditContact(Resource):
 class ListContacts(Resource):
 
     @staticmethod
-    def get():
-        return [{'id':'1', 'name':'Igor','email':'igorsbrito93@gmail.com','phone':'85997819696'}, {'id':'1', 'name':'Pedro','email':'pedro01@gmail.com','phone':'8599974597'}]
+    def get(user_id):
+        
+        contacts = crudBD.listContacts(user_id);
+        if(len(contacts) > 0):
+            return contacts
+        else:
+            return []
+
+        #return [{'id':'1', 'name':'Igor','email':'igorsbrito93@gmail.com','phone':'85997819696'}, {'id':'1', 'name':'Pedro','email':'pedro01@gmail.com','phone':'8599974597'}]
 
 class RemoveContact(Resource):
     @staticmethod
@@ -112,10 +129,10 @@ class LogIn(Resource):
 
 """-------ENDPOINTS-------"""
 #api.add_resource(Teste,'/teste/<string:word>', endpoint='teste')
-api.add_resource(InsertContact, '/insert', endpoint='insertContact')
-api.add_resource(EditContact, '/edit', endpoint='editContact')
-api.add_resource(RemoveContact, '/remove/<string:contato_id>',endpoint="removeContact")
-api.add_resource(ListContacts,'/list',endpoint="listContacts");
+api.add_resource(InsertContact, '/insert/<string:user_id>', endpoint='insertContact')
+api.add_resource(EditContact, '/edit/<string:user_id>', endpoint='editContact')
+api.add_resource(RemoveContact, '/remove/<string:contato_id>//<string:user_id>',endpoint="removeContact")
+api.add_resource(ListContacts,'/list/<string:user_id>',endpoint="listContacts");
 api.add_resource(SearchContacts,'/search/<string:name>',endpoint="searchContact")
 api.add_resource(NewUser,'/user/new', endpoint='newUser')
 api.add_resource(EditUser,'/user/edit', endpoint='editUser')

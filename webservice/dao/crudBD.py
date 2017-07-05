@@ -136,6 +136,7 @@ def generateID(username, password):
     return user_id
 
 def generateIDContact(user_id, name):
+    contact_id = ""
     for char in user_id:
         contact_id = contact_id+str(ord(char))
     for char in name:

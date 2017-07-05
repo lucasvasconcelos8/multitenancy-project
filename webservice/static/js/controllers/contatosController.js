@@ -7,7 +7,7 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 	$scope.contatos = [];
 
 	$scope.getContatos = function(){
-		$http.get('http://0.0.0.0:80/list')
+		$http.get('http://0.0.0.0:80/list/'+$scope.userId)
             .success(function (data, status, headers, config) {
                 $scope.contatos = data;
                 console.log($scope.contatos);	
@@ -21,6 +21,10 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 
 	$scope.newContact = function(){
 		$location.path('/newcontact');
+	}
+
+	$scope.logout = function(){
+		$location.path('/');
 	}
 
 
