@@ -17,7 +17,7 @@ angular.module('myApp').controller('newController', function($scope, userService
 			'apelido':$scope.apelido,
 			'email':$scope.email,
 			'phone':$scope.phone.toString(),
-			'dataAniversario':$scope.dataAniversario
+			'dataAniversario':$scope.dataAniversario,
 		}
 
 		$http({

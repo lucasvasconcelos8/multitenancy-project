@@ -64,8 +64,8 @@ angular.module('myApp').controller('logController', function($scope, $http, user
                 if($scope.details.status == "Success"){
                 	var id = $scope.details["id"] 
 
-                	userService.username = $scope.username;
-                	userService.password = $scope.password;
+                	userService.username = $scope.newUsername;
+                	userService.password = $scope.newPassword;
                 	userService.idUser = id;
 
                 	console.log("Sucesso");

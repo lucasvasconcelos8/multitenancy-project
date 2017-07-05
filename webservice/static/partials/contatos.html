@@ -29,19 +29,21 @@
 		<table class="table">
 		    <thead>
 		        <tr>
-		            <th>#</th>
 		            <th>Name</th>
+		            <th>Apelido</th>
 		            <th>Email</th>
 		            <th>Phone</th>
+		            <th>Data de Aniversario</th>
 		            <th>Edit</th>
 		        </tr>
 		    </thead>
 		    <tbody>
 		        <tr ng-repeat="contact in contatos">
-		            <th scope="row">{{contact.id}}</th>
 		            <td>{{contact.name}}</td>
+		      		<td>{{contact.apelido}}</td>
 		            <td>{{contact.email}}</td>
 		            <td>{{contact.phone}}</td>
+		            <td>{{ contact.dataAniversario | date : "dd/MM/yyyy"}}</td>
 		            <td>
 		                <a class="blue-text" href="" ><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
 		            </td>
