@@ -1,9 +1,13 @@
-angular.module('myApp').controller('newController', 
-	function($scope, userService, $location, $http, contactService, $routeParams) {
+angular.module('myApp').controller('editController', 
+	function($scope, userService, $location, $http, $routeParams, editService) {
 
 	$scope.username = userService.username;
 	$scope.password = userService.password;
-	$scope.idUser =  userService.idUser
+	$scope.idUser =  userService.idUser	
+
+	if($routeParams.contactId != undefined){
+		console.log("Funcionou");
+	}
 
 	$scope.logout = function(){
 		$location.path('/');
@@ -14,16 +18,18 @@ angular.module('myApp').controller('newController',
 		$scope.logout();
 	}
 
-	$scope.name = "";
-	$scope.apelido = "";
-	$scope.email = "";
-	$scope.phone = "";
-	$scope.dataAniversario = "";
+	$scope.name = editService.name ;
+	$scope.apelido = editService.apelido;
+	$scope.email = editService.email ;
+	$scope.phone = parseInt(editService.phone);
+	$scope.dataAniversario = new Date(editService.dataAniversario);
 
 
-	$scope.salvar = function(){
+	$scope.editar = function(){
 
 		contact = {
+			'_id':$routeParams.contactId,
+			'user_id':$scope.idUser,
 			'name':$scope.name,
 			'apelido':$scope.apelido,
 			'email':$scope.email,
@@ -33,7 +39,7 @@ angular.module('myApp').controller('newController',
 
 		$http({
 			method: 'POST',
-			url: 'http://0.0.0.0:80/insert/'+userService.idUser,
+			url: 'http://0.0.0.0:80/edit/'+userService.idUser,
 			data: {'contact_json':contact},
 		})
         .success(function (data, status, headers, config) {
@@ -55,5 +61,4 @@ angular.module('myApp').controller('newController',
 		$location.path('/contacts');
 	}
 
-	console.log("testando");
 });

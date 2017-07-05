@@ -52,8 +52,18 @@ class InsertContact(Resource):
 class EditContact(Resource):
 
     @staticmethod
-    def post():
-        return ''
+    def post(user_id):
+
+        data = request.data
+        contact_json = json.loads(data)['contact_json']
+
+
+        resp = crudBD.updateContact(user_id, contact_json)
+
+        if(resp == 'Sucess'):
+            return 'Success'
+        else:
+            return 'fail'
 
 class ListContacts(Resource):
 

@@ -1,6 +1,6 @@
 //'use strict';   // See note about 'use strict'; below
 
-var myApp = angular.module('myApp', ['ngRoute', 'ngResource','userAccount']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngResource','userAccount', 'editContact']);
 
 myApp.config(['$routeProvider',
      function($routeProvider) {
@@ -18,6 +18,10 @@ myApp.config(['$routeProvider',
              when('/newcontact',{
                 templateUrl: '/static/partials/new.html',
                 controller: 'newController',
+             }).
+             when('/newcontact/:contactId',{
+                templateUrl: '/static/partials/edit.html',
+                controller: 'editController',
              }).
              otherwise({
                  redirectTo: '/'
