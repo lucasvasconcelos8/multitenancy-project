@@ -99,7 +99,7 @@ def updateContact(user_id, contact_update_json):
         cursorResult = collUsers.update({"_id" : user_id}, {"$set" : {"option" : true} })
 
     try:
-        contact_json['user_id'] = user_id
+        contact_update_json['user_id'] = user_id
         collContacts.update({"_id" : contact_update_json['_id']}, contact_update_json)
         return 'Sucess'
     except:
