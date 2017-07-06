@@ -18,11 +18,26 @@ angular.module('myApp').controller('editController',
 		$scope.logout();
 	}
 
+	function tratarOptions(obj){
+
+		for (a in obj){
+			var objOption = {
+				atributo:a,
+				valor: obj[a],
+			}
+			$scope.atributos.push(objOption);
+		}
+
+	}
+
+
 	$scope.name = editService.name ;
 	$scope.apelido = editService.apelido;
 	$scope.email = editService.email ;
 	$scope.phone = parseInt(editService.phone);
 	$scope.dataAniversario = new Date(editService.dataAniversario);
+	$scope.atributos = [];
+	tratarOptions(editService.options);
 
 
 	$scope.editar = function(){
@@ -61,4 +76,41 @@ angular.module('myApp').controller('editController',
 		$location.path('/contacts');
 	}
 
+	$scope.openModal = function(){
+	    var modalInstance = $uibModal.open({
+	      templateUrl: 'myModalContentEdit.html',
+	      controller: ModalInstanceCtrlEdit,
+	      resolve: {
+	        items: function () {
+	          return  $scope.obj;
+	        }
+	      }
+	    });
+
+	    modalInstance.result.then(function (obj) {
+	      $scope.atributos.push(obj);
+	    }, function () {});
+  	}
+
 });
+
+var ModalInstanceCtrlEdit = function ($scope, $uibModalInstance, items) {
+
+  $scope.atributo = " ";
+  $scope.valor = "";
+  $scope.obj = {
+  	atributo:"",
+  	valor:"",
+  };
+  $scope.ok = function () {
+  	$scope.obj = {
+  		atributo: $scope.atributo,
+  		valor: $scope.valor,
+  	}
+    $uibModalInstance.close($scope.obj);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+};

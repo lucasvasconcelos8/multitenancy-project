@@ -1,9 +1,11 @@
 angular.module('myApp').controller('newController', 
-	function($scope, userService, $location, $http, $routeParams) {
+	function($scope, userService, $location, $http, $routeParams, $uibModal) {
 
 	$scope.username = userService.username;
 	$scope.password = userService.password;
-	$scope.idUser =  userService.idUser
+	$scope.idUser =  userService.idUser;
+
+	$scope.atributos = [];
 
 	$scope.logout = function(){
 		$location.path('/');
@@ -23,13 +25,36 @@ angular.module('myApp').controller('newController',
 
 	$scope.salvar = function(){
 
-		contact = {
-			'name':$scope.name,
-			'apelido':$scope.apelido,
-			'email':$scope.email,
-			'phone':$scope.phone.toString(),
-			'dataAniversario':$scope.dataAniversario,
+
+		if($scope.atributos.length > 0){
+			var options = { };
+
+			for(a in $scope.atributos){
+				options[$scope.atributos[a].atributo] =  $scope.atributos[a].valor;
+			}
+
+			contact = {
+				'name':$scope.name,
+				'apelido':$scope.apelido,
+				'email':$scope.email,
+				'phone':$scope.phone.toString(),
+				'dataAniversario':$scope.dataAniversario,
+				'options':options,
+			}
+
+		}else{
+
+			contact = {
+				'name':$scope.name,
+				'apelido':$scope.apelido,
+				'email':$scope.email,
+				'phone':$scope.phone.toString(),
+				'dataAniversario':$scope.dataAniversario,
+			}
+
 		}
+
+		
 
 		$http({
 			method: 'POST',
@@ -55,5 +80,41 @@ angular.module('myApp').controller('newController',
 		$location.path('/contacts');
 	}
 
-	console.log("testando");
+	$scope.openModal = function(){
+	    var modalInstance = $uibModal.open({
+	      templateUrl: 'myModalContent.html',
+	      controller: ModalInstanceCtrl,
+	      resolve: {
+	        items: function () {
+	          return  $scope.obj;
+	        }
+	      }
+	    });
+
+	    modalInstance.result.then(function (obj) {
+	      $scope.atributos.push(obj);
+	    }, function () {});
+  	}
+
 });
+
+var ModalInstanceCtrl = function ($scope, $uibModalInstance, items) {
+
+  $scope.atributo = " ";
+  $scope.valor = "";
+  $scope.obj = {
+  	atributo:"",
+  	valor:"",
+  };
+  $scope.ok = function () {
+  	$scope.obj = {
+  		atributo: $scope.atributo,
+  		valor: $scope.valor,
+  	}
+    $uibModalInstance.close($scope.obj);
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+};

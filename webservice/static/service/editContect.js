@@ -8,6 +8,7 @@ angular.module('editContact', ['ngResource'])
            email: '',
            phone: '',
            dataAniversario: '',
+           options: {},
         }
 
         return contact;
