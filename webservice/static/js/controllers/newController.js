@@ -79,6 +79,13 @@ angular.module('myApp').controller('newController',
 		$location.path('/contacts');
 	}
 
+	$scope.deletarAtr = function(index){
+		//var index = $scope.atributos.indexOf(atr);
+		$scope.atributos.splice(index, 1);
+		console.log($scope.atributos);
+		return '';
+	}	
+
 	$scope.openModal = function(){
 	    var modalInstance = $uibModal.open({
 	      templateUrl: 'myModalContent.html',
