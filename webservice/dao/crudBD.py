@@ -96,7 +96,7 @@ def updateContact(user_id, contact_update_json):
     #test if exists 'options' variable in new contact
     if 'options' in contact_update_json.keys():
         #if exists, so this contact is especialized and the user need different visualizations
-        cursorResult = collUsers.update({"_id" : user_id}, {"$set" : {"option" : true} })
+        cursorResult = collUsers.update({"_id" : user_id}, {"$set" : {"option" : True} })
 
     try:
         contact_update_json['user_id'] = user_id

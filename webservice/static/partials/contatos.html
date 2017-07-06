@@ -36,6 +36,7 @@
 		            <th>Data de Aniversario</th>
 		            <th>Edit</th>
 		            <th>Details</th>
+		            <th>Deletar</th>
 		        </tr>
 		    </thead>
 		    <tbody>
@@ -45,10 +46,10 @@
 		            <td>{{contact.email}}</td>
 		            <td>{{contact.phone}}</td>
 		            <td>{{ contact.dataAniversario | date : "dd/MM/yyyy"}}</td>
-		            <td>
+		            <td >
 		                <a class="blue-text" href="" ><span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="editContact(contact)"></span></a>
 		            </td>
-		            <td>
+		            <td >
 		            	<div ng-switch on="contact.options">
 						    <div ng-switch-when="undefined">
 						    </div>
@@ -57,6 +58,9 @@
 						    	<a class="blue-text" href="" ><span class="glyphicon glyphicon-unchecked" aria-hidden="true" ng-click="openDetails(contact)"></span></a>
 						    </div>
 						</div>
+		            </td>
+		            <td >
+		            	<a class="blue-text" href="" ><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="deleteContact(contact)"></span></a>
 		            </td>
 		        </tr>
 		    </tbody>

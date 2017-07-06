@@ -63,6 +63,7 @@ class EditContact(Resource):
         if(resp == 'Sucess'):
             return 'Success'
         else:
+            print resp
             return 'fail'
 
 class ListContacts(Resource):
@@ -80,8 +81,14 @@ class ListContacts(Resource):
 
 class RemoveContact(Resource):
     @staticmethod
-    def get(contact_id):
-      return ''
+    def get(contact_id, user_id):
+
+        resp = crudBD.removeContact(user_id,contact_id);
+
+        if(resp == 'Success'):
+            return 'Success'
+        else:
+            return 'fail'
 
 class SearchContacts(Resource):
     @staticmethod
@@ -141,7 +148,7 @@ class LogIn(Resource):
 #api.add_resource(Teste,'/teste/<string:word>', endpoint='teste')
 api.add_resource(InsertContact, '/insert/<string:user_id>', endpoint='insertContact')
 api.add_resource(EditContact, '/edit/<string:user_id>', endpoint='editContact')
-api.add_resource(RemoveContact, '/remove/<string:contato_id>//<string:user_id>',endpoint="removeContact")
+api.add_resource(RemoveContact, '/remove/<string:contact_id>/<string:user_id>',endpoint="removeContact")
 api.add_resource(ListContacts,'/list/<string:user_id>',endpoint="listContacts");
 api.add_resource(SearchContacts,'/search/<string:name>',endpoint="searchContact")
 api.add_resource(NewUser,'/user/new', endpoint='newUser')

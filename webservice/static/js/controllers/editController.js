@@ -1,13 +1,9 @@
 angular.module('myApp').controller('editController', 
-	function($scope, userService, $location, $http, $routeParams, editService) {
+	function($scope, userService, $location, $http, editService, $uibModal) {
 
 	$scope.username = userService.username;
 	$scope.password = userService.password;
 	$scope.idUser =  userService.idUser	
-
-	if($routeParams.contactId != undefined){
-		console.log("Funcionou");
-	}
 
 	$scope.logout = function(){
 		$location.path('/');
@@ -38,22 +34,45 @@ angular.module('myApp').controller('editController',
 	$scope.dataAniversario = new Date(editService.dataAniversario);
 	$scope.atributos = [];
 	tratarOptions(editService.options);
+	$scope.contactId = editService.idContact;
 
 
 	$scope.editar = function(){
 
-		contact = {
-			'_id':$routeParams.contactId,
-			'user_id':$scope.idUser,
-			'name':$scope.name,
-			'apelido':$scope.apelido,
-			'email':$scope.email,
-			'phone':$scope.phone.toString(),
-			'dataAniversario':$scope.dataAniversario,
+
+		if($scope.atributos.length > 0){
+			var options = { };
+
+			for(a in $scope.atributos){
+				options[$scope.atributos[a].atributo] =  $scope.atributos[a].valor;
+			}
+
+			contact = {
+				'_id':$scope.contactId,
+				'name':$scope.name,
+				'apelido':$scope.apelido,
+				'email':$scope.email,
+				'phone':$scope.phone.toString(),
+				'dataAniversario':$scope.dataAniversario,
+				'options':options,
+			}
+
+		}else{
+
+			contact = {
+				'_id':$scope.contactId,
+				'name':$scope.name,
+				'apelido':$scope.apelido,
+				'email':$scope.email,
+				'phone':$scope.phone.toString(),
+				'dataAniversario':$scope.dataAniversario,
+			}
+
 		}
 
 		$http({
 			method: 'POST',
+			//url: 'http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/edit/'+userService.idUser,
 			url: 'http://0.0.0.0:80/edit/'+userService.idUser,
 			data: {'contact_json':contact},
 		})
@@ -71,6 +90,13 @@ angular.module('myApp').controller('editController',
         });
 
 	}
+
+	$scope.deletarAtr = function(index){
+		//var index = $scope.atributos.indexOf(atr);
+		$scope.atributos.splice(index, 1);
+		console.log($scope.atributos);
+		return '';
+	}	
 
 	$scope.voltar = function(){
 		$location.path('/contacts');

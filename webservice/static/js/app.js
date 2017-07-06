@@ -19,7 +19,7 @@ myApp.config(['$routeProvider',
                 templateUrl: '/static/partials/new.html',
                 controller: 'newController',
              }).
-             when('/editContact/:contactId',{
+             when('/editContact',{
                 templateUrl: '/static/partials/edit.html',
                 controller: 'editController',
              }).

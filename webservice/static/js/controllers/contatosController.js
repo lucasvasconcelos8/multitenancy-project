@@ -18,6 +18,7 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 
 	$scope.getContatos = function(){
 		$http.get('http://0.0.0.0:80/list/'+$scope.userId)
+		//$http.get('http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/list/'+$scope.userId)
             .success(function (data, status, headers, config) {
                 $scope.contatos = data;
             })
@@ -30,6 +31,7 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 
 	$scope.editContact = function(contact){
 
+		editService.idContact = contact._id;
 		editService.name  = contact.name;
 		editService.apelido = contact.apelido;
 		editService.email = contact.email;
@@ -37,7 +39,8 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 		editService.dataAniversario = contact.dataAniversario;
 		editService.options = contact.options;
 
-		$location.path('/editContact/'+contact._id);
+		$location.path('/editContact');
+		return '';
 	}
 
 	$scope.newContact = function(){
@@ -67,6 +70,29 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 	    modalInstance.result.then(function (obj) {
 	      $scope.atributos.push(obj);
 	    }, function () {});
+	}
+
+	$scope.deleteContact = function(contact){
+
+		$http.get('http://0.0.0.0:80/remove/'+contact._id+'/'+$scope.userId)
+		//$http.get('http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/remove/'+contact._id+'/'+$scope.userId)
+            .success(function (data, status, headers, config) {
+                if(data == 'Success'){
+                	$scope.getContatos();
+
+                }else{
+                	alert("Erro no acesso a Banco");
+                } 
+            })
+            .error(function (data, status, header, config) {
+               console.log(status)
+            });
+
+	}
+
+	$scope.remove = function(item) { 
+	  var index = $scope.contatos.indexOf(item);
+	  $scope.contatos.splice(index, 1);     
 	}
 
 });

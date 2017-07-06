@@ -3,6 +3,7 @@ angular.module('editContact', ['ngResource'])
         
 
         var contact = {
+           idContact: '',
            name: '',
            apelido: '',
            email: '',
