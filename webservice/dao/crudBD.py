@@ -2,7 +2,7 @@ from pymongo import MongoClient
 
 #connect with mongoDB via MongoClient
 #connection = MongoClient('localhost', 27017)
-connection = MongoClient('mongodb://@ds161169.mlab.com:61169/heroku_mx7s3w0l')
+connection = MongoClient('mongodb://@ds151232.mlab.com:51232/heroku_x4hf4mx3')
 
 #Connection with an instance of bd in mongo
 #dbContacts = connection['contacts']
