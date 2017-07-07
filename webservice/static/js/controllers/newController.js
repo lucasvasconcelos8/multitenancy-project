@@ -56,8 +56,8 @@ angular.module('myApp').controller('newController',
 
 		$http({
 			method: 'POST',
-			url: 'http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/insert/'+userService.idUser,
-			//url: 'http://0.0.0.0:80/insert/'+userService.idUser,
+			//url: 'http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/insert/'+userService.idUser,
+			url: 'http://0.0.0.0:80/insert/'+userService.idUser,
 			data: {'contact_json':contact},
 		})
         .success(function (data, status, headers, config) {

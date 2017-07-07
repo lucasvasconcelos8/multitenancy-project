@@ -20,8 +20,8 @@ angular.module('myApp').controller('logController', function($scope, $http, user
 	$scope.login = function(){
 		if($scope.username != "" && $scope.password != ""){
 
-			//$http.get(' http://0.0.0.0:80/login/'+$scope.username+"/"+$scope.password)
-			$http.get('http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/login/'+$scope.username+"/"+$scope.password)
+			$http.get(' http://0.0.0.0:80/login/'+$scope.username+"/"+$scope.password)
+			//$http.get('http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/login/'+$scope.username+"/"+$scope.password)
             .success(function (data, status, headers, config) {
                 $scope.details = data;
 
@@ -64,8 +64,8 @@ angular.module('myApp').controller('logController', function($scope, $http, user
 
 			$http({
 				method: 'POST',
-				url: 'http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/user/new',
-				//url:'http://0.0.0.0:80/user/new',
+				//url: 'http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/user/new',
+				url:'http://0.0.0.0:80/user/new',
 				data: {'user_json':user_json},
 			})
             .success(function (data, status, headers, config) {
