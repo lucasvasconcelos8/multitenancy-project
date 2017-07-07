@@ -159,3 +159,6 @@ api.add_resource(ValidateUser, '/user/validate', endpoint='validateUser')
 api.add_resource(LogIn,'/login/<string:username>/<string:password>', endpoint='login')
 
 
+#finish program
+if __name__ == "__main__":
+        application.run(debug=True)
