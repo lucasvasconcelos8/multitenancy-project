@@ -160,4 +160,4 @@ api.add_resource(LogIn,'/login/<string:username>/<string:password>', endpoint='l
 
 
 #finish program
-application.run(host='0.0.0.0')
+application.run()
