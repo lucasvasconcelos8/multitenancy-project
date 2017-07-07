@@ -72,13 +72,16 @@ angular.module('myApp').controller('editController',
 
 		$http({
 			method: 'POST',
-			//url: 'http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/edit/'+userService.idUser,
-			url: 'http://0.0.0.0:80/edit/'+userService.idUser,
+			url: 'http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/edit/'+userService.idUser,
+			//url: 'http://0.0.0.0:80/edit/'+userService.idUser,
 			data: {'contact_json':contact},
 		})
         .success(function (data, status, headers, config) {
             $scope.details = data;
             if($scope.details == "Success"){
+            	if($scope.atributos.length > 0){
+            		userService.option = true;
+            	}
             	$scope.voltar();
             }else{
             	alert("Erro no banco ao inserir");
@@ -94,8 +97,15 @@ angular.module('myApp').controller('editController',
 	$scope.deletarAtr = function(index){
 		//var index = $scope.atributos.indexOf(atr);
 		$scope.atributos.splice(index, 1);
-		console.log($scope.atributos);
-		return '';
+		var options = { };
+
+		for(a in $scope.atributos){
+			options[$scope.atributos[a].atributo] =  $scope.atributos[a].valor;
+		}
+
+		editService.options = options;
+
+		$location.path('/editContact');
 	}	
 
 	$scope.voltar = function(){

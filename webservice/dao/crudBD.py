@@ -1,10 +1,12 @@
 from pymongo import MongoClient
 
 #connect with mongoDB via MongoClient
-connection = MongoClient('localhost', 27017)
+#connection = MongoClient('localhost', 27017)
+connection = MongoClient('mongodb://@ds119728.mlab.com:19728/heroku_8c31d7ls')
 
 #Connection with an instance of bd in mongo
-dbContacts = connection['contacts']
+#dbContacts = connection['contacts']
+dbContacts = connection.get_default_database()
 
 """FUNCTIONS USER"""
 
@@ -48,7 +50,7 @@ def autenticarUsuario(username, password):
     #if ok, return the user credentials(id, type_user)
     if user_auth != {} :
         print 'Check info user: '+str(user_auth['_id'])+'-'+user_auth['type_user']
-        return user_auth['_id'], user_auth['type_user']
+        return user_auth['_id'], user_auth['type_user'], user_auth['name'], user_auth['option']
     else:
         print 'No user'
         return 'Login or password invalid'

@@ -7,6 +7,8 @@ angular.module('myApp').controller('logController', function($scope, $http, user
 	$scope.newEmail = "";
 	$scope.newUsername = "";
 	$scope.newPassword = "";
+	$scope.newName = "";
+	$scope.newPhone = "";
 
 	//
 	userService.username = "";
@@ -18,8 +20,8 @@ angular.module('myApp').controller('logController', function($scope, $http, user
 	$scope.login = function(){
 		if($scope.username != "" && $scope.password != ""){
 
-			$http.get(' http://0.0.0.0:80/login/'+$scope.username+"/"+$scope.password)
-			//$http.get('http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/login/'+$scope.username+"/"+$scope.password)
+			//$http.get(' http://0.0.0.0:80/login/'+$scope.username+"/"+$scope.password)
+			$http.get('http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/login/'+$scope.username+"/"+$scope.password)
             .success(function (data, status, headers, config) {
                 $scope.details = data;
 
@@ -28,6 +30,8 @@ angular.module('myApp').controller('logController', function($scope, $http, user
                 	userService.password = $scope.password;
                 	userService.idUser =  $scope.details.user_id;
                 	userService.typeUser = $scope.details.user_type;
+                	userService.name = $scope.details.user_name;
+                	userService.option = $scope.details.user_option;
 
                 	$scope.initiate();
                 }else{
@@ -50,25 +54,30 @@ angular.module('myApp').controller('logController', function($scope, $http, user
 				'username':$scope.newUsername,
 				'password':$scope.newPassword,
 				'email':$scope.newEmail,
+				'name':$scope.newName,
+				'phone':$scope.newPhone,
 				//type_user define the type of the user. type :1 is the standard type
 				//Others types of user must be defined later
 				'type_user':'1',
+				'option': false,
 			};
 
 			$http({
 				method: 'POST',
-				//url: 'http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/user/new',
-				url:'http://0.0.0.0:80/user/new',
+				url: 'http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/user/new',
+				//url:'http://0.0.0.0:80/user/new',
 				data: {'user_json':user_json},
 			})
             .success(function (data, status, headers, config) {
                 $scope.details = data;
                 if($scope.details.status == "Success"){
-                	var id = $scope.details["id"] 
 
                 	userService.username = $scope.newUsername;
                 	userService.password = $scope.newPassword;
-                	userService.idUser = id;
+                	userService.idUser = $scope.details["id"];
+                	userService.name = $scope.newName;
+                	userService.option = false;
+
 
                 	console.log("Sucesso");
                 	// Open new the system.

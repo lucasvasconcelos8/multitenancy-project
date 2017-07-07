@@ -56,14 +56,21 @@ angular.module('myApp').controller('newController',
 
 		$http({
 			method: 'POST',
-			//url: 'http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/insert/'+userService.idUser,
-			url: 'http://0.0.0.0:80/insert/'+userService.idUser,
+			url: 'http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/insert/'+userService.idUser,
+			//url: 'http://0.0.0.0:80/insert/'+userService.idUser,
 			data: {'contact_json':contact},
 		})
         .success(function (data, status, headers, config) {
             $scope.details = data;
             if($scope.details == "Success"){
+            	
+            	if($scope.atributos.length > 0){
+            		userService.option = true;
+            	}
+
             	$scope.voltar();
+
+
             }else{
             	alert("Erro no banco ao inserir");
             }
@@ -81,7 +88,10 @@ angular.module('myApp').controller('newController',
 
 	$scope.deletarAtr = function(index){
 		//var index = $scope.atributos.indexOf(atr);
-		$scope.atributos.splice(index, 1);
+		var atr = $scope.atributos;
+		atr.splice(index, 1);
+		//$scope.atributos.splice(index, 1);
+		$scope.atributos = atr;
 		console.log($scope.atributos);
 		return '';
 	}	

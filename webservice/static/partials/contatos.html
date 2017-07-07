@@ -11,7 +11,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button> 
-	          <a class="navbar-brand" href="" style="color:#fff;">Agenda de {{username}}</a>
+	          <a class="navbar-brand" href="" style="color:#fff;">Agenda de {{name}}</a>
 	        </div>
 	        <div id="navbar" class="collapse navbar-collapse">
 	          <ul class="nav navbar-nav navbar-right" style="padding-right: 20px">
@@ -35,7 +35,13 @@
 		            <th>Phone</th>
 		            <th>Data de Aniversario</th>
 		            <th>Edit</th>
-		            <th>Details</th>
+		            <div ng-switch on="option">
+						    <div ng-switch-when="false"></div>
+						    <div ng-switch-default>
+						        <!-- code to render the regular video block -->
+						    	<th>Details</th>
+						    </div>
+					</div>
 		            <th>Deletar</th>
 		        </tr>
 		    </thead>

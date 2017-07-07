@@ -7,6 +7,9 @@ angular.module('userAccount', ['ngResource'])
             password: "",
             idUser: "",
             typeUser: "",
+            name:"",
+            phone:"",
+            option:"",
             //proprietes from user account
         }
 

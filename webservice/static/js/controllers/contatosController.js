@@ -3,6 +3,8 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 	$scope.username = userService.username;
 	$scope.password = userService.password;
 	$scope.userId = userService.idUser;
+	$scope.name = userService.name;
+	$scope.option = userService.option;
 
 
 	$scope.logout = function(){
@@ -17,8 +19,8 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 	$scope.contatos = [];
 
 	$scope.getContatos = function(){
-		$http.get('http://0.0.0.0:80/list/'+$scope.userId)
-		//$http.get('http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/list/'+$scope.userId)
+		//$http.get('http://0.0.0.0:80/list/'+$scope.userId)
+		$http.get('http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/list/'+$scope.userId)
             .success(function (data, status, headers, config) {
                 $scope.contatos = data;
             })
@@ -74,8 +76,8 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 
 	$scope.deleteContact = function(contact){
 
-		$http.get('http://0.0.0.0:80/remove/'+contact._id+'/'+$scope.userId)
-		//$http.get('http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/remove/'+contact._id+'/'+$scope.userId)
+		//$http.get('http://0.0.0.0:80/remove/'+contact._id+'/'+$scope.userId)
+		$http.get('http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/remove/'+contact._id+'/'+$scope.userId)
             .success(function (data, status, headers, config) {
                 if(data == 'Success'){
                 	$scope.getContatos();

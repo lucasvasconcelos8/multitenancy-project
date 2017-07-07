@@ -138,8 +138,10 @@ class LogIn(Resource):
         if (isinstance(resp, tuple)):
             user_id = resp[0]
             user_type = resp[1]
+            user_name = resp[2]
+            user_option = resp[3]
 
-            return {'status':'Success', 'user_id':user_id, 'user_type':user_type}
+            return {'status':'Success', 'user_id':resp[0], 'user_type':resp[1], 'user_name': resp[2], 'user_option':resp[3]}
         else:
             return {'status':'fail', 'msg':resp}
 
