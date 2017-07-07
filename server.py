@@ -16,13 +16,13 @@ sys.setdefaultencoding('utf-8')
 from dao import crudBD
 
 """-------Flask start e config-------"""
-app = Flask(__name__, static_folder='static')
+application = Flask(__name__)
 
-api = Api(app)
+api = Api(application)
 
-app.config['UPLOAD_FOLDER'] = 'uploads/'
+application.config['UPLOAD_FOLDER'] = 'uploads/'
 
-app.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+application.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 parser = reqparse.RequestParser()
 
@@ -161,4 +161,4 @@ api.add_resource(LogIn,'/login/<string:username>/<string:password>', endpoint='l
 
 
 #finish program
-app.run(host='0.0.0.0', port=80, debug=True)
+application.run(host='0.0.0.0', port=80, debug=True)
