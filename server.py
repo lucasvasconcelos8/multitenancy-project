@@ -160,4 +160,5 @@ api.add_resource(LogIn,'/login/<string:username>/<string:password>', endpoint='l
 
 
 #finish program
-application.run()
+if __name__ == "__main__":
+    application.run()
