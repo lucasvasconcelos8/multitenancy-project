@@ -30,17 +30,31 @@ angular.module('myApp').controller('newController',
 	$scope.salvar = function(){
 
 
-		if($scope.atributos.length > 0 && ){
+		if($scope.facebook != "" || $scope.linkedin != "" || $scope.twitter != "" || $scope.instagram != ""){
+			var obj = {'facebook' :$scope.facebook, 
+				'linkedin': $scope.linkedin, 
+				'twitter':$scope.twitter, 
+				'instagram':$scope.instagram}
+
+
+
+		}else{
+			var obj = {'facebook' :"", 
+				'linkedin':"", 
+				'twitter':"", 
+				'instagram':""}
+
+		}
+
+		
+		if($scope.atributos.length > 0 ){
 			var options = { };
 
 			for(a in $scope.atributos){
 				options[$scope.atributos[a].atributo] =  $scope.atributos[a].valor;
 			}
 
-			if(){
-
-				
-			}
+			
 
 			contact = {
 				'name':$scope.name,
