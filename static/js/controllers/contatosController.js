@@ -33,7 +33,8 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 	$scope.contatos = [];
 
 	$scope.getContatos = function(){
-		$http.get('http://0.0.0.0:80/list/'+$scope.userId)
+		$http.get('https://immense-caverns-45110.herokuapp.com/list/'+$scope.userId)
+		//$http.get('http://0.0.0.0:80/list/'+$scope.userId)
 		//$http.get('http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/list/'+$scope.userId)
             .success(function (data, status, headers, config) {
                 $scope.contatos = data;
@@ -90,7 +91,8 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 
 	$scope.deleteContact = function(contact){
 
-		$http.get('http://0.0.0.0:80/remove/'+contact._id+'/'+$scope.userId)
+		$http.get('https://immense-caverns-45110.herokuapp.com/remove/'+contact._id+'/'+$scope.userId)
+		//$http.get('http://0.0.0.0:80/remove/'+contact._id+'/'+$scope.userId)
 		//$http.get('http://ec2-34-209-10-153.us-west-2.compute.amazonaws.com:80/remove/'+contact._id+'/'+$scope.userId)
             .success(function (data, status, headers, config) {
                 if(data == 'Success'){
