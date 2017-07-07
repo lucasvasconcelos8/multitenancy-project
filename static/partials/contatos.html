@@ -42,17 +42,16 @@
 		            <td >
 		                <a class="blue-text" href="" ><span class="glyphicon glyphicon-edit" aria-hidden="true" ng-click="editContact(contact)"></span></a>
 		            </td>
-		            
+		            <td>
 		            	<div ng-switch on="contact.options">
-						    <td ng-switch-when="!undefined">
-						    	<a class="blue-text" href="" ><span class="glyphicon glyphicon-unchecked" aria-hidden="true" ng-click="openDetails(contact)"></span></a>
-						    </td>
-						    <td ng-switch-default>
+						    <div ng-switch-when="undefined">
+						    </div>
+						    <div ng-switch-default>
 						        <!-- code to render the regular video block -->
-						    	
-						    </td>
+						    	<a class="blue-text" href="" ><span class="glyphicon glyphicon-unchecked" aria-hidden="true" ng-click="openDetails(contact)"></span></a>
+						    </div>
 						</div>
-		           
+		            </td>
 		            <td >
 		            	<a class="blue-text" href="" ><span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="deleteContact(contact)"></span></a>
 		            </td>
