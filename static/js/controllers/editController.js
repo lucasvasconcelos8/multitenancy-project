@@ -5,6 +5,7 @@ angular.module('myApp').controller('editController',
 	$scope.password = userService.password;
 	$scope.idUser =  userService.idUser	
 
+
 	$scope.logout = function(){
 		$location.path('/');
 	}
@@ -35,6 +36,10 @@ angular.module('myApp').controller('editController',
 	$scope.atributos = [];
 	tratarOptions(editService.options);
 	$scope.contactId = editService.idContact;
+	$scope.facebook = editService.optionspre.facebook;
+	$scope.linkedin = editService.optionspre.linkedin;
+	$scope.twitter = editService.optionspre.twitter;
+	$scope.instagram = editService.optionspre.instagram;
 
 
 	$scope.editar = function(){
@@ -55,6 +60,11 @@ angular.module('myApp').controller('editController',
 				'phone':$scope.phone.toString(),
 				'dataAniversario':$scope.dataAniversario,
 				'options':options,
+				'optionspre':{
+					'facebook' :$scope.facebook, 
+					'linkedin': $scope.linkedin, 
+					'twitter':$scope.twitter, 
+					'instagram':$scope.instagram}
 			}
 
 		}else{
@@ -66,6 +76,11 @@ angular.module('myApp').controller('editController',
 				'email':$scope.email,
 				'phone':$scope.phone.toString(),
 				'dataAniversario':$scope.dataAniversario,
+				'optionspre':{
+					'facebook' :$scope.facebook, 
+					'linkedin': $scope.linkedin, 
+					'twitter':$scope.twitter, 
+					'instagram':$scope.instagram}
 			}
 
 		}
