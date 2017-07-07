@@ -21,12 +21,6 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 		$scope.campos = ["Name", "Apelido", "Email", "Phone", "Data de Aniversario", "Edit","Deletar"];
 	}
 
-	$scope.showing = false;
-	mostrarOption();
-
-	$scope.openDetails = function(){
-		console.log("Sucesso!!");
-	}
 
 	$scope.mostrarOption = function(){
 		if($scope.optionspre){
@@ -35,6 +29,15 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 			$scope.showing = false;
 		}
 	}
+
+	$scope.showing = false;
+	mostrarOption();
+
+	$scope.openDetails = function(){
+		console.log("Sucesso!!");
+	}
+
+	
 
 	$scope.logout = function(){
 		$location.path('/');
