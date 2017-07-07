@@ -31,7 +31,7 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 	}
 
 	$scope.showing = false;
-	mostrarOption();
+	$scope.mostrarOption();
 
 	$scope.openDetails = function(){
 		console.log("Sucesso!!");
