@@ -92,9 +92,12 @@ angular.module('myApp').controller('newController',
             	
             	if($scope.atributos.length > 0){
             		userService.option = true;
-            		userService.optionspre = true;
             	}
 
+            	if($scope.facebook != "" || $scope.linkedin != "" || $scope.twitter != "" || $scope.instagram != ""){
+
+            		userService.optionspre = true;
+            	}
             	$scope.voltar();
 
 
