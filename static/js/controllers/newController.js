@@ -63,6 +63,7 @@ angular.module('myApp').controller('newController',
 				'phone':$scope.phone.toString(),
 				'dataAniversario':$scope.dataAniversario,
 				'options':options,
+				'optionspre':
 			}
 
 		}else{
