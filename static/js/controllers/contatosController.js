@@ -49,13 +49,13 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 				var linkedin = $scope.contatos[c].optionspre.linkedin;
 			}
 
-			if(c.optionspre.twitter == ""){
+			if($scope.contatos[c].optionspre.twitter == ""){
 				var twitter = "-";
 			}else{
 				var twitter = $scope.contatos[c].optionspre.twitter;
 			}
 
-			if(c.optionspre.instagram == ""){
+			if($scope.contatos[c].optionspre.instagram == ""){
 				var instagram = "-";
 			}else{
 				var instagram = $scope.contatos[c].optionspre.instagram;
