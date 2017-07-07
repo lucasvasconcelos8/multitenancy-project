@@ -25,7 +25,7 @@ application.config['ALLOWED_EXTENSIONS'] = set(['txt', 'pdf', 'png', 'jpg', 'jpe
 
 parser = reqparse.RequestParser()
 
-@app.route('/')
+@application.route('/')
 def log():
     return send_file('templates/index.html')
 
