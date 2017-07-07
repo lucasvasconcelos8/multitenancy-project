@@ -36,10 +36,10 @@ angular.module('myApp').controller('editController',
 	$scope.atributos = [];
 	tratarOptions(editService.options);
 	$scope.contactId = editService.idContact;
-	$scope.facebook = editService.optionspre.facebook;
-	$scope.linkedin = editService.optionspre.linkedin;
-	$scope.twitter = editService.optionspre.twitter;
-	$scope.instagram = editService.optionspre.instagram;
+	$scope.facebook = editService.options.facebook;
+	$scope.linkedin = editService.options.linkedin;
+	$scope.twitter = editService.options.twitter;
+	$scope.instagram = editService.options.instagram;
 
 
 	$scope.editar = function(){
