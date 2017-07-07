@@ -15,7 +15,7 @@ sys.setdefaultencoding('utf-8')
 from dao import crudBD
 
 """-------Flask start e config-------"""
-application = Flask(__name__)
+application = Flask(__name__, static_folder='static')
 
 api = Api(application)
 
