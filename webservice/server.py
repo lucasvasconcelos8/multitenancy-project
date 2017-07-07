@@ -6,6 +6,7 @@ from werkzeug import secure_filename
 from datetime import datetime
 import json
 import sys
+from importlib import reload
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
