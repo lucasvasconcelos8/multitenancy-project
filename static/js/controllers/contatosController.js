@@ -21,13 +21,18 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 		$scope.campos = ["Name", "Apelido", "Email", "Phone", "Data de Aniversario", "Edit","Deletar"];
 	}
 
-	$scope.showing = true;
+	$scope.showing = false;
+	mostrarOption();
 
-	$scope.hideShow = function(){
-		if($scope.showing){
-			$scope.showing = false;
-		}else{
+	$scope.openDetails = function(){
+		console.log("Sucesso!!");
+	}
+
+	$scope.mostrarOption = function(){
+		if($scope.optionspre){
 			$scope.showing = true;
+		}else{
+			$scope.showing = false;
 		}
 	}
 
