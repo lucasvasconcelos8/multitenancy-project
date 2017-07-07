@@ -37,32 +37,32 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 		$scope.detailsContact = [];
 
 		for(c in $scope.contatos){
-			if(c.optionspre.facebook == ""){
+			if($scope.contatos[c].optionspre.facebook == ""){
 				var facebook = "-";
 			}else{
-				var facebook = c.optionspre.facebook;
+				var facebook = $scope.contatos[c].optionspre.facebook;
 			}
 
-			if(c.optionspre.linkedin == ""){
+			if($scope.contatos[c].optionspre.linkedin == ""){
 				var linkedin = "-";
 			}else{
-				var linkedin = c.optionspre.linkedin;
+				var linkedin = $scope.contatos[c].optionspre.linkedin;
 			}
 
 			if(c.optionspre.twitter == ""){
 				var twitter = "-";
 			}else{
-				var twitter = c.optionspre.twitter;
+				var twitter = $scope.contatos[c].optionspre.twitter;
 			}
 
 			if(c.optionspre.instagram == ""){
 				var instagram = "-";
 			}else{
-				var instagram = c.optionspre.instagram;
+				var instagram = $scope.contatos[c].optionspre.instagram;
 			}
 
 			var obj = {
-				name: c.name,
+				name: $scope.contatos[c].name,
 				facebook : facebook,
 				linkedin : linkedin,
 				twitter : twitter,
