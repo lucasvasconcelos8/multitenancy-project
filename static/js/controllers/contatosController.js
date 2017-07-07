@@ -75,6 +75,7 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 
 		detailsService.details = $scope.detailsContact;
 
+		$location.path('/details');
 	}
 
 	
