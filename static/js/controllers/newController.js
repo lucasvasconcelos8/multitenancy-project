@@ -63,7 +63,7 @@ angular.module('myApp').controller('newController',
 				'phone':$scope.phone.toString(),
 				'dataAniversario':$scope.dataAniversario,
 				'options':options,
-				'optionspre':
+				'optionspre':obj,
 			}
 
 		}else{
@@ -74,6 +74,7 @@ angular.module('myApp').controller('newController',
 				'email':$scope.email,
 				'phone':$scope.phone.toString(),
 				'dataAniversario':$scope.dataAniversario,
+				'optionspre':obj,
 			}
 
 		}
