@@ -63,7 +63,7 @@ class EditContact(Resource):
         if(resp == 'Sucess'):
             return 'Success'
         else:
-            print resp
+            #print resp
             return 'fail'
 
 class ListContacts(Resource):
