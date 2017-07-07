@@ -1,6 +1,6 @@
 //'use strict';   // See note about 'use strict'; below
 
-var myApp = angular.module('myApp', ['ngRoute','userAccount', 'editContact', 'ui.bootstrap']);
+var myApp = angular.module('myApp', ['ngRoute','userAccount', 'editContact', 'ui.bootstrap', 'detailsContact']);
 
 myApp.config(['$routeProvider',
      function($routeProvider) {
@@ -22,6 +22,10 @@ myApp.config(['$routeProvider',
              when('/editContact',{
                 templateUrl: '/static/partials/edit.html',
                 controller: 'editController',
+             }).
+             when('/details',{
+                templateUrl: '/static/partials/details.html',
+                controller: 'detailsController',
              }).
              otherwise({
                  redirectTo: '/'

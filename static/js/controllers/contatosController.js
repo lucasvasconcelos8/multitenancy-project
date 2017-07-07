@@ -1,4 +1,4 @@
-angular.module('myApp').controller('contatosController', function($scope, $http, userService, $location, editService, $uibModal) {
+angular.module('myApp').controller('contatosController', function($scope, $http, userService, $location, editService, $uibModal, detailsService) {
 
 	$scope.username = userService.username;
 	$scope.password = userService.password;
@@ -33,8 +33,48 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 	$scope.showing = false;
 	$scope.mostrarOption();
 
-	$scope.openDetails = function(){
-		console.log("Sucesso!!");
+	$scope.openFxedDetails = function(){
+		$scope.detailsContact = [];
+
+		for(c in $scope.contatos){
+			if(c.optionspre.facebook == ""){
+				var facebook = "-";
+			}else{
+				var facebook = c.optionspre.facebook;
+			}
+
+			if(c.optionspre.linkedin == ""){
+				var linkedin = "-";
+			}else{
+				var linkedin = c.optionspre.linkedin;
+			}
+
+			if(c.optionspre.twitter == ""){
+				var twitter = "-";
+			}else{
+				var twitter = c.optionspre.twitter;
+			}
+
+			if(c.optionspre.instagram == ""){
+				var instagram = "-";
+			}else{
+				var instagram = c.optionspre.instagram;
+			}
+
+			var obj = {
+				name: c.name,
+				facebook : facebook,
+				linkedin : linkedin,
+				twitter : twitter,
+				instagram : instagram,
+
+			}
+
+			$scope.detailsContact.push(obj);
+		}
+
+		detailsService.details = $scope.detailsContact;
+
 	}
 
 	

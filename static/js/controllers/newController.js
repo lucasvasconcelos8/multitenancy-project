@@ -92,6 +92,7 @@ angular.module('myApp').controller('newController',
             	
             	if($scope.atributos.length > 0){
             		userService.option = true;
+            		userService.optionspre = true;
             	}
 
             	$scope.voltar();
