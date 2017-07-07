@@ -44,11 +44,12 @@
 		            </td>
 		            
 		            	<div ng-switch on="contact.options">
-						    <td ng-switch-when="undefined">
+						    <td ng-switch-when="!undefined">
+						    	<a class="blue-text" href="" ><span class="glyphicon glyphicon-unchecked" aria-hidden="true" ng-click="openDetails(contact)"></span></a>
 						    </td>
 						    <td ng-switch-default>
 						        <!-- code to render the regular video block -->
-						    	<a class="blue-text" href="" ><span class="glyphicon glyphicon-unchecked" aria-hidden="true" ng-click="openDetails(contact)"></span></a>
+						    	
 						    </td>
 						</div>
 		           
