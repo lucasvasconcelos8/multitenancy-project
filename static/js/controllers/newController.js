@@ -4,6 +4,10 @@ angular.module('myApp').controller('newController',
 	$scope.username = userService.username;
 	$scope.password = userService.password;
 	$scope.idUser =  userService.idUser;
+	$scope.facebook = "";
+	$scope.linkedin = "";
+	$scope.twitter = "";
+	$scope.instagram = "";
 
 	$scope.atributos = [];
 
@@ -26,11 +30,16 @@ angular.module('myApp').controller('newController',
 	$scope.salvar = function(){
 
 
-		if($scope.atributos.length > 0){
+		if($scope.atributos.length > 0 && ){
 			var options = { };
 
 			for(a in $scope.atributos){
 				options[$scope.atributos[a].atributo] =  $scope.atributos[a].valor;
+			}
+
+			if(){
+
+				
 			}
 
 			contact = {

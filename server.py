@@ -136,12 +136,8 @@ class LogIn(Resource):
         resp = crudBD.autenticarUsuario(username, password)
 
         if (isinstance(resp, tuple)):
-            user_id = resp[0]
-            user_type = resp[1]
-            user_name = resp[2]
-            user_option = resp[3]
 
-            return {'status':'Success', 'user_id':resp[0], 'user_type':resp[1], 'user_name': resp[2], 'user_option':resp[3]}
+            return {'status':'Success', 'user_id':resp[0], 'user_type':resp[1], 'user_name': resp[2], 'user_option':resp[3], 'user_optionspre':resp[4]}
         else:
             return {'status':'fail', 'msg':resp}
 

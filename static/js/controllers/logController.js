@@ -34,6 +34,7 @@ angular.module('myApp').controller('logController', function($scope, $http, user
                 	userService.typeUser = $scope.details.user_type;
                 	userService.name = $scope.details.user_name;
                 	userService.option = $scope.details.user_option;
+                	userService.optionspre = $scope.details.user_optionspre;
 
                 	$scope.initiate();
                 }else{
@@ -62,6 +63,7 @@ angular.module('myApp').controller('logController', function($scope, $http, user
 				//Others types of user must be defined later
 				'type_user':'1',
 				'option': false,
+				'optionspre' : false,
 			};
 
 			$http({
@@ -80,6 +82,7 @@ angular.module('myApp').controller('logController', function($scope, $http, user
                 	userService.idUser = $scope.details["id"];
                 	userService.name = $scope.newName;
                 	userService.option = false;
+                	userService.optionspre = false;
 
 
                 	console.log("Sucesso");

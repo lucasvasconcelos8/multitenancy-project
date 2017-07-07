@@ -10,6 +10,7 @@ angular.module('userAccount', ['ngResource'])
             name:"",
             phone:"",
             option:"",
+            optionspre:"",
             //proprietes from user account
         }
 

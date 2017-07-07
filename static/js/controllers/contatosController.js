@@ -3,6 +3,7 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 	$scope.username = userService.username;
 	$scope.password = userService.password;
 	$scope.userId = userService.idUser;
+	$scope.optionspre = userService.optionspre;
 	$scope.name = userService.name;
 	if(userService.option){
 		$scope.option = true;
@@ -20,6 +21,15 @@ angular.module('myApp').controller('contatosController', function($scope, $http,
 		$scope.campos = ["Name", "Apelido", "Email", "Phone", "Data de Aniversario", "Edit","Deletar"];
 	}
 
+	$scope.showing = true;
+
+	$scope.hideShow = function(){
+		if($scope.showing){
+			$scope.showing = false;
+		}else{
+			$scope.showing = true;
+		}
+	}
 
 	$scope.logout = function(){
 		$location.path('/');

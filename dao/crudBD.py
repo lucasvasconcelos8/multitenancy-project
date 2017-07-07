@@ -50,7 +50,7 @@ def autenticarUsuario(username, password):
     #if ok, return the user credentials(id, type_user)
     if user_auth != {} :
         print 'Check info user: '+str(user_auth['_id'])+'-'+user_auth['type_user']
-        return user_auth['_id'], user_auth['type_user'], user_auth['name'], user_auth['option']
+        return user_auth['_id'], user_auth['type_user'], user_auth['name'], user_auth['option'], user_auth['optionspre']
     else:
         print 'No user'
         return 'Login or password invalid'
@@ -67,7 +67,7 @@ def insertContact(user_id, contact_json):
     contact_json['_id'] = contact_id
 
     #test if exists 'options' variable in new contact
-    if 'options' in contact_json.keys():
+    if 'options' in contact_json.keys() or 'optionspre' in contact_json.keys():
         #if exists, so this contact is especialized and the user need different visualizations
         cursorResult = collUsers.update({"_id" : user_id}, {"$set" : {"option" : True} })
 
@@ -96,7 +96,7 @@ def updateContact(user_id, contact_update_json):
     collUsers = dbContacts['users']
 
     #test if exists 'options' variable in new contact
-    if 'options' in contact_update_json.keys():
+    if 'options' in contact_update_json.keys() or 'optionspre' in contact_json.keys():
         #if exists, so this contact is especialized and the user need different visualizations
         cursorResult = collUsers.update({"_id" : user_id}, {"$set" : {"option" : True} })
 
